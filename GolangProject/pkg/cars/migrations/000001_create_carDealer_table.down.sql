@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS carDealers_and_car;
+DROP TABLE IF EXISTS carDealers;
+DROP TABLE IF EXISTS car;

@@ -1,0 +1,34 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table carDealers {
+  id bigserial [primary key]
+  created_at timestamp
+  updated_at timestamp
+  title text
+  description text
+  coordinates text
+  address text
+  country text
+}
+
+Table car {
+  id bigserial [primary key]
+  created_at timestamp
+  updated_at timestamp
+  title text
+  description text
+  year int
+}
+
+// many-to-many
+Table carDealers_and_car {
+  id bigserial [primary key]
+  created_at timestamp
+  updated_at timestamp
+  carDealers bigserial
+  car bigserial
+}
