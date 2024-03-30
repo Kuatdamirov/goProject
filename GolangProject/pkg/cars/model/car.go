@@ -16,13 +16,13 @@ type Car struct {
 	Year uint   `json:"Year"`
 }
 
-type carModel struct {
+type CarModel struct {
 	DB       *sql.DB
 	InfoLog  *log.Logger
 	ErrorLog *log.Logger
 }
 
-func (c carModel) Insert(car *Car) error {
+func (c CarModel) Insert(car *Car) error {
 	// Insert a new menu item into the database.
 	query := `
 		INSERT INTO car (title, description, year) 
@@ -36,7 +36,7 @@ func (c carModel) Insert(car *Car) error {
 	return c.DB.QueryRowContext(ctx, query, args...).Scan(&car.Id, &car.CreatedAt, &car.UpdatedAt)
 }
 
-func (c carModel) Get(id int) (*Car, error) {
+func (c CarModel) Get(id int) (*Car, error) {
 	// Retrieve a specific menu item based on its ID.
 	query := `
 		SELECT id, created_at, updated_at, title, description, year
@@ -55,7 +55,7 @@ func (c carModel) Get(id int) (*Car, error) {
 	return &car, nil
 }
 
-func (c carModel) Update(car *Car) error {
+func (c CarModel) Update(car *Car) error {
 	// Update a specific menu item in the database.
 	query := `
 		UPDATE car
@@ -70,7 +70,7 @@ func (c carModel) Update(car *Car) error {
 	return c.DB.QueryRowContext(ctx, query, args...).Scan(&car.UpdatedAt)
 }
 
-func (c carModel) Delete(id int) error {
+func (c CarModel) Delete(id int) error {
 	// Delete a specific menu item from the database.
 	query := `
 		DELETE FROM car
