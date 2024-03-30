@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-type carDealer struct {
+type CarDealer struct {
 	Id          string `json:"id"`
 	CreatedAt   string `json:"createdAt"`
 	UpdatedAt   string `json:"updatedAt"`
@@ -17,13 +17,13 @@ type carDealer struct {
 	Country     string `json:"country"`
 }
 
-type carDealerModel struct {
+type CarDealerModel struct {
 	DB       *sql.DB
 	InfoLog  *log.Logger
 	ErrorLog *log.Logger
 }
 
-var carDealers = []carDealer{
+var carDealers = []CarDealer{
 	{
 		Id:      "1",
 		Title:   "Porshe Center Almaty",
@@ -56,11 +56,11 @@ var carDealers = []carDealer{
 	},
 }
 
-func GetCarDealers() []carDealer {
+func GetCarDealers() []CarDealer {
 	return carDealers
 }
 
-func GetCarDealer(id string) (*carDealer, error) {
+func GetCarDealer(id string) (*CarDealer, error) {
 	for _, r := range carDealers {
 		if r.Id == id {
 			return &r, nil
